@@ -8,8 +8,11 @@ const fetchBreedDescription = function(breedName, callback) {
       callback(error, null);
     } else {
       const data = JSON.parse(body);
-      //when the breed is not found the data will be an empty array also, error = null
-      callback(error, data.length ? data[0].description : "Breed Not Found!");
+      if (data.length) {
+        callback(null, data[0].description );
+      } else {
+        callback("Breed Not Found!", null);
+      }
     }
   });
 };

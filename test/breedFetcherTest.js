@@ -18,14 +18,14 @@ describe("#fetchBreedDescription", () => {
     });
   });
 
-  it('returns a string "Breed Not Found!" for an invalid breed', (done) => {
+  it('returns an erro "Breed Not Found!" for an invalid breed', (done) => {
     fetchBreedDescription('mnmonm', (err, desc) => {
-      //we expact no error
-      assert.equal(err, null);
+      //we expact an error
+      assert.equal(err, "Breed Not Found!");
 
-      const expectedDesc = "Breed Not Found!";
-      assert.equal(expectedDesc, desc);
-      
+      //we expect the description to be null
+      assert.equal(desc, null);
+
       done();
     })
   });
